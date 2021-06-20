@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>pyyz notes | BeNaive</title><meta name="robots" content="noindex">
+  <title>pyyz notes | BeNaive</title>
   
 
 
@@ -198,43 +198,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="6-9-ZR"><a href="#6-9-ZR" class="headerlink" title="6.9(ZR)"></a>6.9(ZR)</h2><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>树剖+楼房重建</p>
-<p>每条重链开一棵线段树，节点存储区间左端点的 $f$ 值与本段 $f$ 值的 $min$ ，以及 $a$ 值的和及最小后缀和</p>
-<p><code>pushup</code> 时类似楼房重建，根据右区间的 $f$ 值能否更新左区间的 $f$ 值判断如何更新 $min$ 值</p>
-<p>同时每个节点开一个multiset，记录轻儿子的 $f$ 值</p>
-<h2 id="6-10-ZR"><a href="#6-10-ZR" class="headerlink" title="6.10(ZR)"></a>6.10(ZR)</h2><h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><p>先不考虑删穿情况，将双端队列视为双栈，线段树维护栈两侧各自删除与加入数量</p>
-<p>当询问第 $k$ 个元素时</p>
-<p>若现有序列未被删空，则可以计算出第 $k$ 个元素的所在部位（前端/后端/现有序列）及位置，递归查询即可</p>
-<p>若现有序列被删空，则答案一定不在现有序列中，因此不需关注现有序列的具体元素，只需关注长度</p>
-<p>因此直接递归到右儿子，将现有序列长度作为变量传入即可</p>
-<h2 id="6-11-jz"><a href="#6-11-jz" class="headerlink" title="6.11(jz)"></a>6.11(jz)</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>根号重构（ $O(T)$ 与 $O((\dfrac{n}{T})^2*\log(\dfrac{n}{T}))$ 平衡， $O(n\sqrt{n}\log{n})$ ）或莫队（ $O(n\sqrt{n}\log{n})$ ）或 KD-Tree $O(n\sqrt{n})$</p>
-<p>前两者吊打后者</p>
-<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>退背包，因不互质无法正常退背包</p>
-<p>按照 $1,n,2,n-1,…,n/2,n/2+1$ 顺序加入，维护前后缀和合并背包（由于只需一处点值，复杂度为 $O(n^2)$ ）或分治均可</p>
-<h2 id="6-12"><a href="#6-12" class="headerlink" title="6.12"></a>6.12</h2><h3 id="B-1"><a href="#B-1" class="headerlink" title="B"></a>B</h3><p>有限生成阿贝尔群基本定理：有限生成阿贝尔群同构于阶为素数幂的群的直和</p>
-<p>因此对每个质因子求出拆分数即可</p>
-<h3 id="C-2"><a href="#C-2" class="headerlink" title="C"></a>C</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jz-597/p/13935537.html">平面图完美匹配计数</a></p>
-<h2 id="6-13"><a href="#6-13" class="headerlink" title="6.13"></a>6.13</h2><h3 id="C-3"><a href="#C-3" class="headerlink" title="C"></a>C</h3><p>stO wyz Orzzzzzz</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/luositing/article/details/104090246">Lyndon分解</a></p>
-<p>与本题类似但不同</p>
-<p>考虑有后向前加入字符，合并前缀使得分段字典序单调不增</p>
-<p>如第一段字典序大于第二段，则第一段大于此后所有，答案即为第一段</p>
-<p>否则设共有 $n$ 个前缀相等分段</p>
-<p>若 $k\mid n$ ，则最后 $\dfrac{n}{k}$ 段接上后缀最大，答案为此段</p>
-<p>否则仍旧是前 $\dfrac{n}{k}$ 段最大，答案为前 $\dfrac{n}{k}$ 段</p>
-<h2 id="6-14"><a href="#6-14" class="headerlink" title="6.14"></a>6.14</h2><p>见 ssf notes 4.17</p>
-<h2 id="6-15"><a href="#6-15" class="headerlink" title="6.15"></a>6.15</h2><h3 id="B-2"><a href="#B-2" class="headerlink" title="B"></a>B</h3><p>确定大小关系即可拆开绝对值</p>
-<p>维护分段二次函数</p>
-<p>二分出最小值</p>
-<p>加入一个变量相当于取前缀最小值/后缀最小值/不操作后全局加二次函数</p>
-<p><code>deque</code>维护，打全局加标记即可</p>
-<h2 id="6-17"><a href="#6-17" class="headerlink" title="6.17"></a>6.17</h2><h3 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h3><p>枚举长度，撒点，区间是lcp之前的lcp与lcs拼起来，或lcs之后的lcs与lcp拼起来</p>
-<p>线段树维护区间+1与区间清零即可</p>
-<h3 id="B-3"><a href="#B-3" class="headerlink" title="B"></a>B</h3><p>多点求值、点分</p>
-<p>（优秀的 $n^2$ 多点求值可以通过）</p>
-<h3 id="C-4"><a href="#C-4" class="headerlink" title="C"></a>C</h3><p>一阶线图：一个点把边缩起来</p>
-<p>二阶：一条边缩了两端点的团</p>
-<!-- flag of hidden posts -->
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ac56aabcec5176e6559d3ef1db03f75149f9591b1693b8c99aea17233be0ab4a">2077a20310a770ddf13c3305ae8553e9450f50cc6b2951fd4cba6c7aa7852671c842b0bfa0c3e1146638770f6287814e68fb6635820cf64b1d432ee70bf463b8bf6c97632b12618eccfd7fd1498fb2fa767051980bc75db8fe679c1be0a21b85c725f35c60fdb327ddbf8f9550c9d14d2eb9d8ea02ab31ce5777182528588c718a62cddf52c2d3a356c18529143ac3b9743b35a950c5f5be654b40664031640a9eeab011fb526cd676d5396a02044b787eec4374530f4a10361c0f2e175062989c213684aa21ecf98fe21df9efe88089b48616b234a27e7007a40aa369ca6dcfe5c79c616fd481cbdc27309f41159d656c09524b919f43159f8c827926fd24c031497e899c346d5e68da6171beb956b6c3417808fe169bd1d559a215df089b89cbbbc214c2b8869ead75962874eaf2095d8ac0f118b16a55dc38eaa3eb503007e54d6787fe2854ad620cedeb9b2596e1227635484c3ab1743e7dd84567ebb3468bab8fc6776b1dd8cd8d2a35bd63f1ffcd5e3e49c245da59cd8589f3befd0be1f4a372cce991d542f0df7d95dd4e56762b061a83fa817c75632fcf19fb820efff6ddc73bfca3c2537fd63d672f80502472875d5721f715a84b73c348879b41ec8c8ec44696b64234917cafa312abf6085dd3b91eb4d491afb973f8fb7a65949dd40df552186ef51855de78c3faf354319c0615e5e998ec09a60ab7744e775606d8b7dcddcef50ff2d48bdb862d04f9d29fe2a2879d02865df3f9880020224acc1c0c4402a138fc49318b2a45b33da02ced0a05d05e6028ad645d7da13318c0a0be6ea987e9528e42d78ec5f28e87aff29da8dc0d13a5894fe4662aafc8780cc06d154abe23b51220f81f63c7f0f6034437b3a7b50be5fcd4f92f164f9096b34697222dee15edad850ae320c5343b77de43fae40d5e1f461fc2335c6a80024984689892869d55e40531028214c77e8ee2b273be9c7406ac22320fd8298c3ef785f84582c6c37cdb2e6387773e7d85a84115b8bb3ffa33881539b061c2e71c535392a133b93bbdeb9bce66713ec747683556a2c6d1e4381119ea9e337796d4e99e359879bf07dcee6c26d6eb2770837d9e50a450dea401dbdd4df80e84cb61fc27f4b565cc7e522f256bf9d3e63ed2ff4a47b99d6d366b52aa2900482feedf221f0d2e12339ad1395e2cd9ebbda0922a6a1a8518414e7bf7bbadf803e28b6c29ebc88420b3650cff42a825daf8e5450692475c2f6c3b369cd1511810e9af9a676cb66326798f6901acd3efd8b69f64964a80dc93ce3bf227db59bd6e6ae900826b944d8c698320c0713f135e384958a65db0e95eb59415b9a759cc396f3c3069fedb9fca423ad8d925689cf22504c6de72524d87a6c9454ec8afa3112d5b00e0fc1f34eb0590c95ccc70e6c5ad2ec2941e62f9dcc119358c998cd524a1311e314275afd583a88d1681957efa7511ea5d2705f23b8f0d5300bc70e05dbaea6e6ecbe1fb70bd622523948858a1a84c09bf0ddf4451b6c51391c7f1bf597e5a59deed6ec8c8adda4f182b9f60e86367cd615ff4ae55bf6f124d6428dace10f2d5a44d74e34a4bba663317d7dd4e9432a4284f4649bda20d885c6dc715b5b490c4744cc10b5d528a7764bcc12856ca5a6e2b363554235767ddd977240b499039ce7f10e4230fc8166382fece07667bc0112daca0f7b1358a60c0aa7b03d0bf26cb4a100fcc813301bb13e0e919b18e5cc93693934bb2e2252c8f68c80ae7ba24da8c561f45c98cf6cd53f45d28c0c9d383c624b040d64dad10024ae1aa9f846d006eab2d7787c881245fff737f2ab83199185654e350d1101b3abc6516f50003583106f485ab79e7f9355cdecb940c0a5b78250191215ebd558acded2c2d4fcf53efd181209c97e430c63783c921a1007571bfc149dbeb5225eae124b46e4025079889a23c602bfbd928a5b6f80b4cf2aa23e36feb18e3930365fc567c27cb40ba0ae0c03a5bd088f03c24582f84eb1a9fbc0f4a8efc494b8213df94899270f95b35fdfd3d0cc477a2b18a56ab58aeda5014ea7658b4c2c8d4c90762f88174656dc5b9089bcf965b29cb7ec23415ce44a63bdfb77a8ca1bd37155f921263eb6686f8c1921ffff4f393914a542f0c7851d13e909b3d0de19676edc2b1a979114045e5324542027a9602a48827a650ef3597a3703d59f104d95397c3fb04e511fa78050ad044f04d9da6f05f9605a35281b92b2253cae77ee8302bb449a4446a363e529267bc3357f9b46ec24a9bca0d6dc6ac9b98eee90331dc82878c02a43401051b71a59274a55dfb44e95c1432dc314f1a0a912042aa0db840fc3e3699c3fbba544b294c353c536a6a7caa4718a2ab1b02ae6588a26039c5e0f792e088cd660d00380002ace86aaf238dfeb0fc74c66da15e4e46a9267772fcb02978cce322a30b6221db3817f01d667847f91ae633f93803fd516680dda6db70cf26b51b57ad691642e8fbd6dcd137bc9c4f0a635720c1eb6d1e671a47a4923d7480116a3e8cf0ff5cb34754abae92329ebbd0ab1835daa90a65b862eeca913fbe100e35c26ae769607d15446e331dbe96e12cc4239bbdc512dccfd26d08caf12c71fe8cffa61c94df31392a7d5992a1465a5d38569494fcac182931749c9ac81ef73d681136b936f92a4674512bf684d19686c1d11487c76e3f790c155bbad689c4255b41339445b5767e2892301731174e19ef4a4bc70c223092c8831c98253f17192d4f2b4f0dd0a35c1a7361f7de259b9de3f4b18d38ad63379b97d93c3029c63b45b81c11f489a17d3e76db93a37990c158dae486f6c0313b1ec518591d25a29491daa0aba1174486257770d9f651e9a1cdd14aeb712dfc788a46f58a05517b4b03b6ff14b717b76455d647c218204b440400131bad1d55bf4fa0f4af7f38a2e70a19838615a48e3ecc2d3d2d2eaf351ef9248424c086d3e0b7b70554c8229cffa68f3365e1f19d6407ad59040269b79f4032b1b04385059420678a59ee83daac41a50d56c5ba52f06c22c1f754b0287582c97dd22b8b9044be91ea949fdb7ad0b0e368ae8cacb07e4f15b47ef44179dc3b9824320b92a8352fc57338ecad85b53790a3ebc729a3aaf5db951fda8d50202398c8d9e43fdf92bc57beacbf44e01d6a1d1b68dec7b6c34bf124e82ca4dd3e1d2955edb6e4ecfebd9fcfb550330d7b71522166df320a5a95fbfa42cb619a647461acd47fa774fb4dcf1cd78492d48b3dc9b464cc06f8a0d13fa80df346b7235b7b48ce460885922d921c5cc12510f29b420d45dada0144a402d1d175a62ee746e3691081a7bf6874826822ce7b514394f9fceb4a0093b5fa4f3eec496caef6df19a2cfac3754175657ebad6a34c9496ec94b476a764245ccd99ff9996459c65e0c2dc618b1e84a1f53f8cbf750f08c3381a3b70a35d8a8a35579926b828c25d501b8bb4a312a00c8cc6143a6f5f0ec0bc8259dce24941ba2c65696ed486173768540049222e307525abbfa690c9134d82ded34cbf81d623b4419b5d6569fa0a5e3cf8817d1fc0e0d9a4a9d4faf520d3b9fce8ec52668f88e3e6c42643b7b0220e49c3ad758bbe66ff8dcad11abe8a72ddc1a772dc285b0473dffa02dfb9d58547cb9e61344ec9c50c2aa823b46ece7d38ba90059be78be23c502a2cb897ed20aac5288de0cbc73165b17a29d81397fcd0b41915f4d03637a4b69a32d96945349e1df46376abe9c819e0f96c0f594236c86b42594b539a84ca8244d61e3504aa0e87b8d10be58798691344fe35da504927efadb5080225d7f4a7a392a1319dd369e8e44e23e8327ae4958be07c43aa6e6b117d35e560a69566a66f697e4602981d2ff2f3b030dd3ed1207dca6ac3bc9e6fda198380cfa40e8ae5ababf79f00a9ac587ae2f7a7990086432192e99ac25cbd6583b2ab0c4edd2d7cf00d8a9d72cd7751bad40a9cb8ea9275aa60bbd8fd5b1e59ddb64114d007e25981d1459a0b87adec6bfbad506bea0de3eb23f16ccdbddce40095fdcbbcb9964f861cfe581981187e8aa4fece454b9bdb2eefc96f3724ffe5b77f8adf2168d3278d577bde62abca127cecf534cb9fb05bef4686da40522e13a2c55cad9fd1bfc29d6bf957e2257bc8f289ead2c348358047825088e80ad7b5c2bb0b95d0d2bb6dd6c87c68f0aa476ba0f2b9fc729e11269d19c113e5cfb0bf6213c11ca77acf8ee076531f8841c6b10b9f4c844d3de842896be24b806e5cb1e57cc12b7e12ca743eb60d2b3dddfcba4f35ebf776b96d75c525461e5ae0963017a22fb915dd1a4d62b4e31b81634f49782de8283ad7f0580c9df58a9b9d41041c5aa67a167e511ef543441e2907edeea7f44c8331b1e324890ba542a09e63379f20472258537b8a9a2b582544e3c4e12694471f5bc8a1fa1f0cde66c2b0f48e2f69fedb7fd2537d0c4f5769d0e1894e6ec138426d8697563a8fd6c91c2a654802be31198600012ca6a6535028a93e6dcf1b11de2e925543f64750e3f2cd12a99f72b99c4128ab052eaacba5648a0cf845222d6d6cec3c84742df1672179119bf62a01876f3341fefdb16363d8f180cece2a685ae1687cd0f30c2c507b968a5fc0e2c0d96cdb8d515dd63d11bb9748af6c0dc3e9074419f904fb5313043c4ee4c15c77e92b4651e2be2e18a9f59bfa460422f64124e7e070817ab55fec001c489226e6b728cbf0e2d632471438b707d66d979eee65ec32a01e54b0708b16c2ce85bf3e1cf3edf55ca3aacebed92b717dd767cb05cfc2fdb9d22fe8d3a0a2f7d69586d774cef5ff99e3f5fad6e9327d08ad41f5611bcfde1e2685e7684f46a9bf79fdb8e00ed477f1ea353fef05346ac311588aa0eab65db6a99e113716eabe6bc7de6bcfed7d39bfa44714a8d692962b428c774d07f8a5b5d2977a6017691932236aff25e4c4310f08416f2f07369ec89b6ed2a73ba70f16e50ef5241ab4916a6c01155a7079e9986334215bb63a8efeffbb3d6990afbeb74ee06f6c8d390f319386d2c9ed750ed677f1e418e0f4702404225d7515f7083cb0c7ec7f0212e9d7d8f928a2790b87092fd45ce0e27c963dd3225dece3b5ff3a720b918c48040a1fbb316febcd19fb57c9142bc41d7ce57231aab5fee3fdb54ab12eda3a653cd51fc97e230b7a323418dd744fa713a6827f66a6662bd15be7cb60ae5b2b22b8039d7180afaa44db1d1245d110a323a1a5269dc10bebe02ff297cdad4b1562f674a4d55ed135af85f296b24075bd86a8162b96dc35a0ce73aee0e264ae99198512285e6e1380c2c6644de482aa340ea38eb84b06783c5c1887878c84e203b9f33114fad8d209b4b9ba8360d1715dfac7925952d451bae6a7516ccd8a3bd4ca913f62d97cde69e9f916c2063dbfc1da5c793132cd533103de56438bb566ddc3c239bbc0e0c02ff5226793536b3ce8f39aa29ada28fd8d31a283075e21787751313b86c122255b63b43c8fa8b88241a46c04c69a44e0d1abdc476b8a7e0615e9a86e8156360f9e0af2daed3388ab7363ba3a4879bd31331590e7e30497577e2f65a8d951292d1459c3cd4f691df1c40abd71f27ad0d7877f43364e3b398213d7c58a17bd7dcbb1c472d5327eeb38ffe0e128bd861e2c5e64772728430c30d581878d4b797a4e7cecacfde5d0750863f6e4408a4c065356eceef40455aadc71a8401c79faeb4d0744e367fdbede10af956c760f22f3fbe524f0fc8ee0e8d1f2dd64796751dd8af37d59bfdeb95df5b33001a2c4af26b3420f43c5e51fab65321a82591f8a376e1cbabf044c8820466d5d0ed2b0fd100ddedb3b06a2972c315e49f520bb2281e0f9e7347dc8c69f5e675ec712f72b65b885adb64cc5c743cc9257e9039d1b50484a1640be5e3a53ef4ba27c238f35e54107792baa74f0d1a564572741c008c526ac45ff26192974a6f7dff3d61c614c06fac7f5aed595476645a0f3661eb88e0f98db4487f01577a5ff0d38c05486436</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -251,6 +226,16 @@
 
 
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/20/ssf-notes/" rel="prev" title="ssf notes">
+      <i class="fa fa-chevron-left"></i> ssf notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/9999/04/05/about/" rel="next" title="About Me">
+      About Me <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -308,7 +293,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-9-ZR"><span class="nav-number">1.</span> <span class="nav-text">6.9(ZR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C"><span class="nav-number">1.1.</span> <span class="nav-text">C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-10-ZR"><span class="nav-number">2.</span> <span class="nav-text">6.10(ZR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-1"><span class="nav-number">2.1.</span> <span class="nav-text">C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-11-jz"><span class="nav-number">3.</span> <span class="nav-text">6.11(jz)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">3.1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B"><span class="nav-number">3.2.</span> <span class="nav-text">B</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-12"><span class="nav-number">4.</span> <span class="nav-text">6.12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-1"><span class="nav-number">4.1.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-2"><span class="nav-number">4.2.</span> <span class="nav-text">C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-13"><span class="nav-number">5.</span> <span class="nav-text">6.13</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-3"><span class="nav-number">5.1.</span> <span class="nav-text">C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-14"><span class="nav-number">6.</span> <span class="nav-text">6.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-15"><span class="nav-number">7.</span> <span class="nav-text">6.15</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-2"><span class="nav-number">7.1.</span> <span class="nav-text">B</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-17"><span class="nav-number">8.</span> <span class="nav-text">6.17</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-1"><span class="nav-number">8.1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-3"><span class="nav-number">8.2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-4"><span class="nav-number">8.3.</span> <span class="nav-text">C</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -322,12 +306,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
